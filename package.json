@@ -1,0 +1,29 @@
+{
+  "name": "12-employee-tracker-management",
+  "version": "1.0.0",
+  "description": "An application that can be used to manage the company's employee database.",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "jest": "^26.6.1",
+    "mysql2": "^2.2.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogers0404/12-employee-tracker-management.git"
+  },
+  "author": "rogers0404",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rogers0404/12-employee-tracker-management/issues"
+  },
+  "homepage": "https://github.com/rogers0404/12-employee-tracker-management#readme"
+}
