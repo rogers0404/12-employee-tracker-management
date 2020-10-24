@@ -1,6 +1,8 @@
 const mysql = require('mysql2');
 const cTable  = require('console.table');
 
+let arr = [];
+
 connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
@@ -35,9 +37,6 @@ viewAllDepartments = () => {
           if (err) throw err;
           console.log('\n');
           console.table(res);
-          //getting all element names for objet
-          arr = getArray(res);
-          return arr;
         });
 };
 
@@ -64,7 +63,7 @@ addDepartment = (deptName) => {
         });
 };
 
-addDRole = (titleJob, salaryJob, deptId) => {
+addRole = (titleJob, salaryJob, deptId) => {
     const query = connection.query(
         'INSERT INTO role SET ?;',
         {
@@ -85,20 +84,53 @@ finishConnection = () => {
 }
 
 getArray = (arr) => {
-    const result =[];
-    for(let i=0; i < arr.lenght; i++)
-        result.push(arr[0].name)
+    let result =[];
+    //console.log(arr.length);
+    for(let i=0; i < arr.length; i++)
+        result.push(arr[i].name);
     return result;
 };
 
 findIndex = (arr, str) => {
-    for(let i=0; i<arr.lenght; i++)
+    for(let i=0; i<arr.length; i++)
         if(arr[i]===str)
             return (i+1);
 }
 
+getDepartments = () => {
+    let arr = [];
+    const query =  connection.query(
+        'SELECT name FROM department;',
+        function(err, res) {
+          if (err) throw err;
+         arr = getArray(res);
+          //console.log(getArray(res))
+          //console.log(arr);
+          //console.log(arr)
+        return arr;
+        });
+        
+};
 
-module.exports = {connectDB, viewAllEmployees, finishConnection, viewAllDepartments, viewAllRoles, addDepartment, findIndex};
+ getDepartments1 = () =>{
+    //let arr = [];
+
+     // get the client
+   
+     const query =  connection.promise().query('SELECT name FROM department;')
+                    .then(([rows,fields]) => {
+                        //console.log(rows);
+                        arr = getArray(rows);
+                        console.log(arr);
+                        return arr;
+                      })
+                    .catch((err) =>  console.log(err));
+    //console.log(arr);
+    //return arr;
+};
+
+
+module.exports = {connectDB, viewAllEmployees, finishConnection, viewAllDepartments, viewAllRoles, addDepartment, findIndex, addRole, getDepartments, getDepartments1, arr};
 
 /* 
 
