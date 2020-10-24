@@ -35,6 +35,9 @@ viewAllDepartments = () => {
           if (err) throw err;
           console.log('\n');
           console.table(res);
+          //getting all element names for objet
+          arr = getArray(res);
+          return arr;
         });
 };
 
@@ -48,13 +51,54 @@ viewAllRoles = () => {
         });
 };
 
+addDepartment = (deptName) => {
+    const query = connection.query(
+        'INSERT INTO department SET ?;',
+        {
+          name: deptName
+        },
+        function(err, res) {
+          if (err) throw err;
+          console.log(' Department Added!\n');
+          //console.table(res);
+        });
+};
+
+addDRole = (titleJob, salaryJob, deptId) => {
+    const query = connection.query(
+        'INSERT INTO role SET ?;',
+        {
+          title: titleJob,
+          salary: salaryJob,
+          departmentId: deptId
+        },
+        function(err, res) {
+          if (err) throw err;
+          console.log(' Role Added!\n');
+          //console.table(res);
+        });
+};
+
 
 finishConnection = () => {
     connection.end();
 }
 
+getArray = (arr) => {
+    const result =[];
+    for(let i=0; i < arr.lenght; i++)
+        result.push(arr[0].name)
+    return result;
+};
 
-module.exports = {connectDB, viewAllEmployees, finishConnection, viewAllDepartments, viewAllRoles};
+findIndex = (arr, str) => {
+    for(let i=0; i<arr.lenght; i++)
+        if(arr[i]===str)
+            return (i+1);
+}
+
+
+module.exports = {connectDB, viewAllEmployees, finishConnection, viewAllDepartments, viewAllRoles, addDepartment, findIndex};
 
 /* 
 
