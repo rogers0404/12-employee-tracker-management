@@ -38,33 +38,55 @@ You need some packages to run this application,
 - `git clone git@github.com:rogers0404/11-note-taker.git        //clone the repository`
 - `npm i                                   // or npm install to get all packages and dependencies of NPM`
 - `npm init                                // to get package.json`
-- `npm install express                     // check wether you have installed npm packages or just install express`
-- `npm install -g heroku                   // install git heroku for deployment and get the server functionality`
-- `heroku create app-notes-taker           // name of the app in heroku`
-- `npm install shortid                     // install shortid from npm package for generating unique ID`
-
+- `npm install jest --save-dev             // Install the code testing Jest`
+- `npm install --save mysql2               // Install npm package for MySQL`
+- `npm install inquirer                    // Install npm Inquirer package`
+- `npm install console.table --save        // Install npm console.table to give table format to SQL queries `
+- `mysql -u root -p                        // Initial Setting to Database`
+- `Inside mysql you must run the following command line. source db/schema.sql and source seeds.sql`
 
 
 ## Usage 
 
 Defining Express in the application:
 
-`const express = require('express');`
+`const inquirer = require('inquirer');`
+`const mysql = require('mysql2');`
+`const cTable  = require('console.table');`
+`const Employee = require('./Employee');`
+`const Department = require('./Department');`
 
 The starting command-line is:
 
 `npm start                                 // to run the server`
+`npm test                                  // to test the code with jest`
+`mysql -u root -p                          // Initial Setting to Database`
 
-Examples of routes:
+Examples of methods to execute queries in async way:
 
-`router.get('/', (req, res) => {`
-`  res.sendFile(path.join(__dirname, '../public/index.html'));`
-`});`
+`finishConnection() {               `
+`       connection.end();           `
+`    }                              `
 
-`// API GET`
-`router.get("/api/notes", (req, res) => {`
-`    res.json(notes);`
-`  });`
+`  viewAllQuery(str){                                           `
+`       const query =  connection.promise()                     `
+`                       .query(str)                             `
+`                       .then(([rows,fields]) => {              `
+`                           console.log('\n');                  `
+`                            console.table(rows);               `                        
+`                       })                                      `
+`                        .catch((err) =>  console.log(err));    `
+`    };                                                         `
+
+`    deleteQuery(str){                                              `
+`        const query =  connection.promise()                        `
+`                        .query(str)                                `
+`                        .then(([rows,fields]) => {                 `
+`                            console.log('\n');                     `
+`                            console.log(' Register Deleted!\n');   `
+`                        })                                         `
+`                        .catch((err) =>  console.log(err));        `
+`    };                                                             `
 
 
 ## Contributing
@@ -74,22 +96,34 @@ Examples of routes:
 
 ## License
 
-Note Taker with Express.js is licensed under the
+Employee tracker management App with Node.js and MySQL2 is licensed under the
 
 ![v1](https://img.shields.io/static/v1?label=License&message=None&color=inactive&&style=plastic)
 
 None
 
-Express.js and shortid Dependency is licensed under the
+console.table Dependency is licensed under the
 
 ![v1](https://img.shields.io/static/v1?label=License&message=MIT&color=green&&style=plastic)
 
 MIT
 
+Inquirer Dependency is licensed under
+
+![v1](https://img.shields.io/static/v1?label=License&message=MIT&color=green&&style=plastic)
+
+Copyright (c) 2016 Simon Boudrias (twitter: @vaxilart) Licensed under the MIT license.
+
+
 
 ## Test
 
-None
+the Objects created are tested with Jest Package
+
+`npm test                                  // to test the code with jest`
+
+Queries are tested inside package MySQL2
+
 
 ## Questions
 
@@ -99,8 +133,6 @@ for more information you can have a question via email [rogers.ramirez2008@gmail
 
 
 ## Screenshots
-
-
 
 ### Screenshot 1
 
