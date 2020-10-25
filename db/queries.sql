@@ -78,7 +78,11 @@ SELECT CONCAT(firstName, ' ', lastName) as name FROM employee INNER JOIN (SELECT
 SELECT DISTINCT managerId FROM employee WHERE managerId IS NOT NULL;
 
 
+/* Delete a Department */
+DELETE role, department FROM department INNER JOIN role ON department.id = role.departmentId WHERE department.id = 3;
 
 
 
+/* Total budget by Department */
 
+SELECT SUM(salary) AS Total_Budget FROM role INNER JOIN (SELECT * FROM department WHERE id = 2) as result1 ON result1.id = role.departmentId INNER JOIN employee ON employee.roleId = role.id;
