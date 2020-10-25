@@ -65,6 +65,9 @@ SELECT * FROM employee WHERE managerId = 4;
 /*************************************************************************************/
 
 
+SELECT CONCAT(firstName, ' ', lastName) as name FROM employee;
+
+
 
 
 
