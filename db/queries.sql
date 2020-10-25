@@ -57,16 +57,25 @@ UPDATE employee
     /*we need to search first for role and then get the id role and store it in employee*/
 /*************************************************************************************/
 
-/*Query #10 See all employees by manager. Bonus #3*/
+/*Query #10 See all employees by Manager. Bonus #5*/
 
-SELECT * FROM employee WHERE managerId = 4;
+SELECT result.id, firstName, lastName, title, salary, name as department FROM role LEFT JOIN department ON department.id = role.departmentId RIGHT JOIN (SELECT * FROM employee WHERE managerId = 1) as result ON result.roleId = role.id;
 
     /*we need to search first for managerId and then get the id employee and store it in employee*/
 /*************************************************************************************/
 
+/*Query #10 See all employees by Department. Bonus #3*/
+SELECT employee.id, firstName, lastName, title, salary, result1.name as department FROM role INNER JOIN (SELECT * FROM department WHERE id = 2) as result1 ON result1.id = role.departmentId INNER JOIN employee ON employee.roleId = role.id;
+    /*we need to search first for managerId and then get the id employee and store it in employee*/
+/*************************************************************************************/
 
 SELECT CONCAT(firstName, ' ', lastName) as name FROM employee;
 
+/* GETTING MANAGERS NAME*/
+SELECT CONCAT(firstName, ' ', lastName) as name FROM employee INNER JOIN (SELECT DISTINCT managerId FROM employee WHERE managerId IS NOT NULL) as  managers ON managers.managerId = employee.id;
+
+/* GETTING id from employee */
+SELECT DISTINCT managerId FROM employee WHERE managerId IS NOT NULL;
 
 
 
