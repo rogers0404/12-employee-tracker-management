@@ -28,7 +28,8 @@ It has developed with Node.js, MySQL Database, Inquirer and MySQL2 packages and 
     - [GIT: git@github.com:rogers0404/12-employee-tracker-management.git](git@github.com:rogers0404/12-employee-tracker-management.git)
 
 * Link Video
-    - [Video: https://drive.google.com/file/d/1HqMTZ4fwL7h1bLdVHcnpat2V8hMp9yva/view](https://drive.google.com/file/d/1HqMTZ4fwL7h1bLdVHcnpat2V8hMp9yva/view)
+    - [Youtube Video: https://youtu.be/66aD5Yslw_Y](https://youtu.be/66aD5Yslw_Y)
+    - [Google Drive Video: https://drive.google.com/file/d/1L_ZzRqjHDop5IUXWi7qdfTzaSazX2p2V/view](https://drive.google.com/file/d/1L_ZzRqjHDop5IUXWi7qdfTzaSazX2p2V/view)
 
 
 ## Installation
@@ -136,20 +137,4 @@ for more information you can have a question via email [rogers.ramirez2008@gmail
 
 ### Screenshot 1
 
-![](./public/assets/images/image1.png)
-
-### Screenshot 2
-
-![](./public/assets/images/image2.png)
-
-### Screenshot 3
-
-![](./public/assets/images/image3.png)
-
-### Screenshot 4
-
-![](./public/assets/images/image4.png)
-
-### Screenshot 5
-
-![](./public/assets/images/image5.png)
+![](./assest/images/image1.JPG)
