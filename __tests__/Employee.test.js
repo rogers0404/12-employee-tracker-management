@@ -1,4 +1,4 @@
-const Employee = require('../lib/Employee.js');
+const Employee = require('../lib/Employee');
 
 
 test('Creates an Employee object', () => {
@@ -33,6 +33,6 @@ test('Check getFirstName method', () => {
       test('Check getManager method', () => {
         const employee = new Employee('Dave', 'Duncan', 'SalesPerson', 'Dorian Gray');
         
-          expect(employee.getManager).toEqual(expect.any(String));
+          expect(employee.getManager()).toEqual(expect.any(String));
         });
 
